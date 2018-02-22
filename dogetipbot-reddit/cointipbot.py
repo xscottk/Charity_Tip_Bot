@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
-    dogetipbot is a bot that lets you tip dogecoins on the internets
-    Copyright (C) 2014-2017 Wow Such Business, Inc. and other contributors
+    CharityTipBot is a bot that lets you tip alt coins to a charity of your choice. This system will automatically convert when it reaches a certain limit.
+    Copyright (C) 2014-2017 SKX Charities, Inc. and other contributors
     Portions of this software were derived from ALTcointip by Dmitriy Vi - https://github.com/vindimy/altcointip
 
     This program is free software: you can redistribute it and/or modify
@@ -207,7 +207,7 @@ class CointipBot(object):
 
 	def mark_as_processed(self, thingid=None):
 		if (thingid):
-			lg.debug('> dogetipbot::mark_as_processed(%s)', thingid)
+			lg.debug('> charitytipbot::mark_as_processed(%s)', thingid)
 			sql = "INSERT into t_messages (fullname) values ('%s')" % thingid
 			self.db.execute(sql)
 		else:
@@ -215,7 +215,7 @@ class CointipBot(object):
 
 	def check_id(self, thingid=None):
 		if (thingid):
-			lg.debug('> dogetipbot::check_id(%s): ', thingid)
+			lg.debug('> charitytipbot::check_id(%s): ', thingid)
 			sql = "SELECT * FROM t_messages where fullname='%s'" % thingid
 			mysqlrow = self.db.execute(sql)
 			if mysqlrow.rowcount >= 1:
@@ -223,7 +223,7 @@ class CointipBot(object):
 			else:
 				return False
 		else:
-			lg.debug('> dogetipbot::no thing_id()')
+			lg.debug('> charitytipbot::no thing_id()')
 
 
 	def delete_message(self, message_id, reservation_id):
